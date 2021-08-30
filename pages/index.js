@@ -1,6 +1,5 @@
-import client from "../apolloClient";
+import {apolloQuery} from "../utils/apolloHelpers";
 import {GET_COUNTRIES} from "../operations/temp/queries";
-
 
 export default function Home({countries}) {
   return (
@@ -17,11 +16,7 @@ export default function Home({countries}) {
 }
 
 export async function getServerSideProps() {
-  const { data, error } = await client.query({
-    query: GET_COUNTRIES
-  });
-
-  console.log(data, error)
+  const { data, error } = await apolloQuery(GET_COUNTRIES);
 
   return {
     props: {

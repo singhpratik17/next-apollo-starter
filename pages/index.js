@@ -1,17 +1,17 @@
 import { apolloQuery } from '../utils/apolloHelpers';
 import { GET_COUNTRIES } from '../operations/temp/queries';
+import { Grid, Typography } from '@material-ui/core';
 
 export default function Home({ countries }) {
   return (
-    <div>
+    <Grid container justifyContent="space-around" direction="row">
       {countries.map((country) => (
-        <div key={country.code}>
-          <p>
-            {country.code} - {country.emoji}
-          </p>
-        </div>
+        <Grid item key={country.code}>
+          <Typography variant="body1">{country.code}</Typography>
+          <Typography variant="h1">{country.emoji}</Typography>
+        </Grid>
       ))}
-    </div>
+    </Grid>
   );
 }
 
